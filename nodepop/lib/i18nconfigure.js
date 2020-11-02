@@ -10,6 +10,7 @@ i18n.configure({
   defaultLocale: 'en',
   autoReload: true,
   syncFiles: true,
+  cookie: 'language',
 });
 
 module.exports = i18n;
