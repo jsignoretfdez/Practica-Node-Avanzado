@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<%include header.ejs%>
+<h3>Listado de Anuncios</h3>
+<table class="table table-striped">
+    <tr>
+        <th class="col-width">#</th>
+        <th class="col-width">ID</th>
+        <th class="col-width">Nombre Producto</th>
+        <th class="col-width">Venta</th>
+        <th class="col-width">Precio</th>
+        <th class="col-width">Tags</th>
+        <th class="col-width">Foto</th>
+
+    </tr>
+    <% anuncios.forEach((anuncio, i) =>{%>
+
+        <tr>
+            <td><%= i + 1 %></td>
+            <td class="col-width"><%= anuncio._id %></td>
+            <td class="col-width"><%= anuncio.nombre %></td>
+            <td class="col-width"><%= anuncio.venta ? 'Si' : 'No' %></td>
+            <td class="col-width"><%= anuncio.precio %>€</td>
+            <td class="col-width"><%= anuncio.tags %></td>
+            <td class="col-width"><img src="../images/anuncios/<%= anuncio.foto %>" alt="" class="img-spot"></td>
+        </tr>
+    <% }) %>
+</table>
+<nav class="nav">
+    <a class="nav-link active" href="/">Página Ejemplo</a>
+
+</nav>
+</body>
+</html>
