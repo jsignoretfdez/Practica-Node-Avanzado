@@ -1,4 +1,23 @@
 {
 	"Welcome To": "Bienvenido a",
 	"Welcome to": "Bienvenido a",
+	"Home": "Inicio",
+	"Page-Example": "Pagina-Ejemplo",
+	"Advertisements": "Anuncios",
+	"Login": "Login",
+	"Advertisements List": "Lista Anuncios",
+	"ID": "ID",
+	"Product Name": "Nombre Producto",
+	"Sale": "Venta",
+	"Price": "Precio",
+	"Tags": "Tags",
+	"Photo": "Foto",
+	"Tag Filter": "Filtro Tags",
+	"Price Filter": "Filtro Precio",
+	"Name Filter": "Filtro Nombre",
+	"Descendent Filter": "Filtro Descendiente",
+	"Pagination": "Paginación",
+	"Sale Filter": "Filtro Venta",
+	"Various Filter": "Filtros Varios",
+	"New Ads": "Crear Anuncios"
 }

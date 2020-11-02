@@ -4,5 +4,20 @@
 	"Home": "Home",
 	"Advertisements": "Advertisements",
 	"Login": "Login",
-	"Page-Example": "Page-Example"
+	"Page-Example": "Page-Example",
+	"Advertisements List": "Advertisements List",
+	"ID": "ID",
+	"Product Name": "Product Name",
+	"Sale": "Sale",
+	"Price": "Price",
+	"Tags": "Tags",
+	"Photo": "Photo",
+	"Tag Filter": "Tag Filter",
+	"Price Filter": "Price Filter",
+	"Name Filter": "Name Filter",
+	"Descendent Filter": "Descendent Filter",
+	"Pagination": "Pagination",
+	"Sale Filter": "Sale Filter",
+	"Various Filter": "Various Filter",
+	"New Ads": "New Ads"
 }
