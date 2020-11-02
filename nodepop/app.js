@@ -14,6 +14,7 @@ const apiAnuncios = require('./routes/api/anuncios');
 const authenticateController = require('./controllers/authenticateController');
 const authJWT = require('./lib/authJWT');
 const anunciosController = require('./controllers/anunciosController');
+const i18n = require('./lib/i18nconfigure');
 
 const app = express();
 
@@ -30,6 +31,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+
+app.use(i18n.init);
 
 app.locals.title = 'Nodepop';
 
