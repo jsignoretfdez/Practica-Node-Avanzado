@@ -5,7 +5,7 @@
 const Anuncio = require('../models/Anuncio');
 
 class anunciosController {
-  async anuncioLista (req, res, next) {
+  async anuncioLista(req, res, next) {
     try {
       const {
         nombre, sort, tags, precio, venta,
@@ -42,8 +42,7 @@ class anunciosController {
         filtro.venta = venta;
       }
       // Listado de anuncios
-      console.log('Aqui:', req.sessionIdApi);
-      const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags, req.sessionIdApi);
+      const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags);
       // res.json(anuncios);
       res.render('anuncios', { anuncios });
     } catch (err) {
