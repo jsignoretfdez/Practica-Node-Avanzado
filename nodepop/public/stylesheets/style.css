@@ -10220,3 +10220,8 @@ div.custom-file{
   margin-top: 50px;
 }
 
+.flag-language{
+  width: 20px;
+  height: 15px;
+  margin: 0 .5rem;
+}
