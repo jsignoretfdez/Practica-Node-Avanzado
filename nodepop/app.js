@@ -14,6 +14,7 @@ const apiAnuncios = require('./routes/api/anuncios');
 const authenticateController = require('./controllers/authenticateController');
 const authJWT = require('./lib/authJWT');
 const anunciosController = require('./controllers/anunciosController');
+const changeLocale = require('./controllers/change-locale');
 const i18n = require('./lib/i18nconfigure');
 
 const app = express();
@@ -37,6 +38,7 @@ app.use(i18n.init);
 app.locals.title = 'Nodepop';
 
 app.use('/', indexRouter);
+app.get('/change-locale/:locale', changeLocale.changeLanguage);
 app.get('/anuncios-lista', anunciosController.anuncioLista);
 app.use('/api/anuncios', authJWT(), apiAnuncios);
 app.post('/api/authenticate', authenticateController.post);
