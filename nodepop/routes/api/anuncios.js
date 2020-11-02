@@ -93,7 +93,9 @@ router.get('/', async (req, res, next) => {
       filtro.venta = venta;
     }
     // Listado de anuncios
-    const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags);
+    console.log('Aqui:', req.sessionIdApi);
+    const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags, req.sessionIdApi);
+    //res.json(anuncios);
     res.render('anuncios', { anuncios });
   } catch (err) {
     next(err);

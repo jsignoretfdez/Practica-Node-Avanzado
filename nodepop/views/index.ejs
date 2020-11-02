@@ -1,49 +1,126 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  </head>
-  <body>
-    <%include header.ejs%>
-    <h3>Página de Ejemplo: Listado de Anuncios</h3>
-    <table class="table table-striped">
-    <tr>
-      <th class="col-width">#</th>
-      <th class="col-width">ID</th>
-      <th class="col-width">Nombre Producto</th>
-      <th class="col-width">Venta</th>
-      <th class="col-width">Precio</th>
-      <th class="col-width">Tags</th>
-      <th class="col-width">Foto</th>
+ <%include header.ejs%>
 
-    </tr>
-    <% anuncios.forEach((anuncio, i) =>{%>
+ <!-- Services-->
+ <section class="page-section" id="services">
+  <div class="container">
+   <h1 align="center">Bienvenido a Nodepop 👋</h1>
 
-     <tr>
-       <td><%= i + 1 %></td>
-       <td class="col-width"><%= anuncio._id %></td>
-       <td class="col-width"><%= anuncio.nombre %></td>
-       <td class="col-width"><%= anuncio.venta ? 'Si' : 'No' %></td>
-       <td class="col-width"><%= anuncio.precio %>€</td>
-       <td class="col-width"><%= anuncio.tags %></td>
-       <td class="col-width"><img src="../images/anuncios/<%= anuncio.foto %>" alt="" class="img-spot"></td>
-     </tr>
-  <% }) %>
-    </table>
-    <nav class="nav">
-      <a class="nav-link active" href="/api/anuncios">Listado Anuncios</a>
-      <a class="nav-link active" href="/api/anuncios?tags=work%20funny">Filtro Por Tag</a>
-      <a class="nav-link" href="/api/anuncios?precio=80-190">Filtro Por Precio</a>
-      <a class="nav-link" href="/api/anuncios?nombre=n">Filtrado Por Nombre</a>
-      <a class="nav-link" href="/api/anuncios?sort=-precio">Filtrado Por orden descendente</a>
-      <a class="nav-link" href="/api/anuncios?limit=2&skip=1">Paginación</a>
-      <a class="nav-link" href="/api/anuncios?venta=true">Filtrado Venta</a>
-      <a class="nav-link" href="/api/anuncios?limit=2&venta=true&precio=60-&tags=sports&nombre=G">Filtros Varios</a>
-    </nav>
-    <form method="post">
-      <button type="submit" formaction="api/anuncios/crear-anuncio"  class="btn btn-outline-success">Crear Anuncio</button>
-    </form>
-  </body>
-</html>
+   <p>Nodepop es una Api que nos sirve un listado de anuncios de segunda manos para la compra o la venta de artículos. Esta montado sobre una Base de datos de MongoDB. La app nos permite crear anuncios, borrarlos y filtrarlos por varios criterios introducidos en la url.</p>
+
+   <h2>Instalación</h2>
+
+   ```sh
+   npm install
+   ```
+
+   ## Configuración Archivo .env
+
+   ```sh
+   cp .env.example .env
+   ```
+   > Una vez se ha copiado el contenido y creado el fichero .env le ponemos el nombre de la Base de datos que vamos a crear.
+
+   ## Inicializar Base de datos de prueba
+
+   ```sh
+   npm run initDB
+   ```
+
+   > Este comando nos va a permitir crear una base de datos de prueba con las colecciones creadas a modo de ejemplo.
+
+   **⚠️ Atención este script borra la base de datos solo debe utilizarse en el primer despligue de la aplicación**
+
+   ## Iniciar la APP
+
+   ```sh
+   npm run start
+   ```
+
+   ### Metodos API
+
+   ## Lista Agentes
+
+   GET /api/anuncios
+
+
+   ![Imagen Lista Anuncios](https://drive.google.com/uc?export=view&id=1uqzZ6uHTaza10QdyJZwFYzZ_DGL7lkGs)
+
+   ## Crear Anuncio
+
+   POST /api/anuncios/crear-anuncio
+
+   ![Crear Anuncio](https://drive.google.com/uc?export=view&id=1nWDaSSF_hxmF7BJV9D28y_RWiqOpIaEE)
+
+   > En la url http://localhost:3000, pulsa en botón crear anuncio y nos lleva al formulario para crear el anuncio
+
+   ![Formulario Anuncio](https://drive.google.com/uc?export=view&id=1tuCGnJBi7P9r537rZrMC2XYw8_HqMEoI)
+
+   POST /api/anuncios/upload
+
+   > Si todo ha salido correctamente nos mandara un json.
+
+   {
+   "tags": [
+   "funny",
+   "gaming",
+   "sports",
+   "house"
+   ],
+   "_id": "5f5e7a306e95a5e45d97c8e4",
+   "nombre": "TV LG",
+   "precio": 50,
+   "venta": false,
+   "foto": "1600027184060_lampara_noche.jpg",
+   "__v": 0
+   }
+
+   ## Borrar Anuncio
+
+   DELETE /:_id
+
+   {
+   "status": "Ok",
+   "resultado": "Anuncio Borrado Correctamente",
+   "id": "5f5cea35079e4ddbab3eeefd"
+   }
+
+   ## Lista de Tags
+
+   GET /api/anuncios/tags
+
+   {
+   "tagsPermitidos": "work / funny / sport / house / lifestyle / gaming"
+   }
+
+   ## Ejemplos de Filtros
+
+   [comment]: # (Filtro Tags)
+   * http://localhost:3000/api/anuncios?tags=work%20funny
+
+   [comment]: # (Filtro Precio)
+   * http://localhost:3000/api/anuncios?precio=80-190
+
+   [comment]: # (Filtro Nombre)
+
+   * http://localhost:3000/api/anuncios?nombre=n
+
+   [comment]: # (Filtro Orden Descendente)
+
+   * http://localhost:3000/api/anuncios?sort=-precio
+
+   [comment]: # (Filtro Paginación)
+
+   * http://localhost:3000/api/anuncios?limit=2&skip=1
+
+   [comment]: # (Filtro Varios)
+
+   * http://localhost:3000/api/anuncios?limit=2&venta=true&precio=60-&tags=sports&nombre=G
+
+
+   ## Author
+
+   👤 **Jose Manuel Signoret Fernández**
+  </div>
+ </section>
+
+ <%include footer.ejs%>

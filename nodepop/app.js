@@ -11,6 +11,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('./lib/connectionDB');
 const indexRouter = require('./routes/index');
 const apiAnuncios = require('./routes/api/anuncios');
+const authenticateController = require('./controllers/authenticateController');
+const authJWT = require('./lib/authJWT');
+const anunciosController = require('./controllers/anunciosController');
 
 const app = express();
 
@@ -31,8 +34,9 @@ app.use(bodyParser.urlencoded({
 app.locals.title = 'Nodepop';
 
 app.use('/', indexRouter);
-
-app.use('/api/anuncios', apiAnuncios);
+app.get('/anuncios-lista', anunciosController.anuncioLista);
+app.use('/api/anuncios', authJWT(), apiAnuncios);
+app.post('/api/authenticate', authenticateController.post);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

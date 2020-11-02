@@ -8,6 +8,7 @@ const readline = require('readline');
 const fs = require('fs');
 const conn = require('./lib/connectionDB');
 const Anuncio = require('./models/Anuncio');
+const Usuario = require('./models/Usuario');
 
 function questionUser(question) {
   // eslint-disable-next-line no-unused-vars
@@ -38,12 +39,28 @@ async function createAnuncio() {
   }
 }
 
+async function createUsuario() {
+  try {
+    // Borrar base de datos
+    console.log('Borrando Base de datos...');
+    await Usuario.deleteMany();
+    const usuariosCreados = await Usuario.insertMany({
+      email: 'admin@example.com',
+      password: await Usuario.hashPassword('1234'),
+    });
+    console.log(`La Base de datos se ha creado correctamente y se ha añadido ${usuariosCreados.length} colecciones`);
+  } catch (e) {
+    console.log('Aqui', e);
+  }
+}
+
 conn.once('open', async () => {
   try {
     const answerUser = await questionUser('Quieres reinicializar la Base de Datos? (no) ');
     if (answerUser.toLowerCase() === 'si') {
       console.log('Borrando la Base de datos');
       await createAnuncio();
+      await createUsuario();
       conn.close();
     } else {
       console.log('No se borrara');

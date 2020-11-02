@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-</head>
-<body>
+var anuncios = require("mongoose");
 <%include header.ejs%>
-<h3>Listado de Anuncios</h3>
+
+<div class="container-table">
+    <h3>Listado de Anuncios</h3>
 <table class="table table-striped">
     <tr>
         <th class="col-width">#</th>
@@ -17,7 +12,6 @@
         <th class="col-width">Precio</th>
         <th class="col-width">Tags</th>
         <th class="col-width">Foto</th>
-
     </tr>
     <% anuncios.forEach((anuncio, i) =>{%>
 
@@ -32,9 +26,18 @@
         </tr>
     <% }) %>
 </table>
+</div>
 <nav class="nav">
-    <a class="nav-link active" href="/">Página Ejemplo</a>
-
+    <a class="nav-link active" href="/api/anuncios">Listado Anuncios</a>
+    <a class="nav-link active" href="/api/anuncios?tags=work%20funny">Filtro Por Tag</a>
+    <a class="nav-link" href="/api/anuncios?precio=80-190">Filtro Por Precio</a>
+    <a class="nav-link" href="/api/anuncios?nombre=n">Filtrado Por Nombre</a>
+    <a class="nav-link" href="/api/anuncios?sort=-precio">Filtrado Por orden descendente</a>
+    <a class="nav-link" href="/api/anuncios?limit=2&skip=1">Paginación</a>
+    <a class="nav-link" href="/api/anuncios?venta=true">Filtrado Venta</a>
+    <a class="nav-link" href="/api/anuncios?limit=2&venta=true&precio=60-&tags=sports&nombre=G">Filtros Varios</a>
 </nav>
-</body>
-</html>
+<form method="post">
+    <button type="submit" formaction="api/anuncios/crear-anuncio"  class="btn btn-outline-success">Crear Anuncio</button>
+</form>
+<%include footer.ejs%>
