@@ -28,8 +28,13 @@
         <div class="container">
             <h3><%= __('Welcome to') %> <%= title %></h3>
             <% getLocales().forEach(locale => { %>
-            <a href="/change-locale/<%= locale %>"><%= locale %></a>
+                <% if(locale === 'es'){ %>
+                    <a href="/change-locale/<%= locale %>"><img src="../images/spain.jpg" alt="" class="flag-language"></a>
+                <% } else{ %>
+                        <a href="/change-locale/<%= locale %>"><img src="../images/england.png" alt="" class="flag-language"></a>
+                <% } %>
             <% }) %>
+
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
