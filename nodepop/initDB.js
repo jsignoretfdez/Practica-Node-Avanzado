@@ -9,6 +9,7 @@ const fs = require('fs');
 const conn = require('./lib/connectionDB');
 const Anuncio = require('./models/Anuncio');
 const Usuario = require('./models/Usuario');
+const cote = require('cote');
 
 function questionUser(question) {
   // eslint-disable-next-line no-unused-vars
