@@ -18,7 +18,7 @@
             <td><%= i + 1 %></td>
             <td class="col-width"><%= anuncio._id %></td>
             <td class="col-width"><%= anuncio.nombre %></td>
-            <td class="col-width"><%= anuncio.venta ? 'Si' : 'No' %></td>
+            <td class="col-width"><%= anuncio.venta ? __('Yes') : __('No') %></td>
             <td class="col-width"><%= anuncio.precio %>€</td>
             <td class="col-width"><%= anuncio.tags %></td>
             <td class="col-width"><img src="../images/anuncios/<%= anuncio.foto %>" alt="" class="img-spot"></td>
