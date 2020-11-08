@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Post Renderiza Vista para Crear anuncio */
-router.post('/crear-anuncio', (req, res, next) => {
+router.get('/crear-anuncio', (req, res, next) => {
   res.render('crear');
 });
 
@@ -30,17 +30,19 @@ router.post('/crear-anuncio', (req, res, next) => {
 router.post('/upload', upload.single('foto'), async (req, res, next) => {
   try {
     const {
-      nombre, precio, tags,
+      nombre, precio, tags, venta,
     } = req.body;
-    let venta = req.body;
     const foto = req.file.filename;
-    /* Compruebo el select y determino si es verdadero o falso */
+    console.log('Aqui primero', typeof (venta));
 
-    if (venta === 'venta') {
+    /* Compruebo el select y determino si es verdadero o falso */
+    /*if (venta) {
       venta = true;
+      console.log('aqui', typeof (venta));
     } else {
       venta = false;
-    }
+      console.log(typeof (venta));
+    }*/
 
     // Creamos el documento en memoria
     const anuncio = new Anuncio({
@@ -93,10 +95,8 @@ router.get('/', async (req, res, next) => {
       filtro.venta = venta;
     }
     // Listado de anuncios
-    console.log('Aqui:', req.sessionIdApi);
-    const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags, req.sessionIdApi);
-    //res.json(anuncios);
-    res.render('anuncios', { anuncios });
+    const anuncios = await Anuncio.list(filtro, limit, skip, sort, tags);
+    res.json(anuncios);
   } catch (err) {
     next(err);
   }
