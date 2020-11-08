@@ -35,7 +35,7 @@ router.post('/upload', upload.single('foto'), async (req, res, next) => {
       nombre, precio, tags, venta,
     } = req.body;
     const foto = req.file.filename;
-    const thumbnail = path.join(`./images/thumbnail/Thumb_${foto}`);
+    const thumbnail = path.join(`./images/thumbnails/Thumb_${foto}`);
 
     // Creamos el documento en memoria
     const anuncio = new Anuncio({
