@@ -10,7 +10,7 @@ createThumbnail.on('createThumb', async (req, done) => {
 
     await img.resize(100, jimp.AUTO);
 
-    await img.writeAsync(path.join(__dirname, '../public/images/thumbnail/', req.thumb));
+    await img.writeAsync(path.join(__dirname, '../public/images/thumbnails/', req.thumb));
 
     done();
   } catch (err) {
