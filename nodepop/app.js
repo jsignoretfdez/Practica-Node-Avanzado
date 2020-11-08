@@ -40,8 +40,8 @@ app.locals.title = 'Nodepop';
 app.use('/', indexRouter);
 app.get('/change-locale/:locale', changeLocale.changeLanguage);
 app.get('/anuncios-lista', anunciosController.anuncioLista);
-app.use('/api/anuncios', authJWT(), apiAnuncios);
 app.post('/api/authenticate', authenticateController.post);
+app.use('/api/anuncios', authJWT(), apiAnuncios);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
