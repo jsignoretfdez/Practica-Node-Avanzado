@@ -5,6 +5,12 @@
 
 > Nodepop es una Api que nos sirve un listado de anuncios de segunda manos para la compra o la venta de artículos. Esta montado sobre una Base de datos de MongoDB. La app nos permite crear anuncios, borrarlos y filtrarlos por varios criterios introducidos en la url.
 
+## Clonar el repositorio
+
+```sh
+git clone https://github.com/jsignoretfdez/Practica-node-avanzado.git
+```
+
 ## Instalación
 
 ```sh
