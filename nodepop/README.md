@@ -1,4 +1,4 @@
-<h1 align="center">Bienvenido a Nodepop 👋</h1>
+<h1 align="center">Bienvenido a NodepopV2 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
@@ -50,6 +50,8 @@ POST /api/authenticate
 
 > Desde Postman hacemos una petición http y en el body recogemos el email y el pass.
 > Si ponemos un email y pass valido nos devolverá un token.
+
+![Imagen Login](https://drive.google.com/uc?export=view&id=1-goXh0T0mG3YpGMOZ57GBq7U3v39apw9)
 
 ## Lista Agentes
 
