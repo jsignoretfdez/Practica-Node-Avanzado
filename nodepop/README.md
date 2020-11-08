@@ -28,6 +28,14 @@ npm run initDB
 
 **⚠️ Atención este script borra la base de datos solo debe utilizarse en el primer despligue de la aplicación**
 
+## Iniciar Microservicios
+
+**⚠️ Opcional esto solo inicial el microservico pero no arranca la app**
+
+```sh
+npm run micro
+```
+
 ## Iniciar la APP
 
 ```sh
@@ -36,45 +44,64 @@ npm run start
 
 ### Metodos API
 
+## Login JWT
+
+POST /api/authenticate
+
+> Desde Postman hacemos una petición http y en el body recogemos el email y el pass.
+> Si ponemos un email y pass valido nos devolverá un token.
+
 ## Lista Agentes
 
 GET /api/anuncios
 
+> Requiere un Token valido
+> El Token lo tenemos que poner en headers{Authotize: Token valido al loguearnos}
+> Si es correcto el token nos va a responder con un JSON de los anuncios
 
-![Imagen Lista Anuncios](https://drive.google.com/uc?export=view&id=1uqzZ6uHTaza10QdyJZwFYzZ_DGL7lkGs)
+{
+        "tags": [
+            "work"
+        ],
+        "_id": "5fa80b27fcbeaf5fc32695f8",
+        "nombre": "Otro",
+        "precio": 12,
+        "venta": true,
+        "foto": "1604848423668_detalle3.png",
+        "thumbnail": "images/thumbnail/Thumb_1604848423668_detalle3.png",
+        "__v": 0
+    }
 
 ## Crear Anuncio
 
-POST /api/anuncios/crear-anuncio
-
-![Crear Anuncio](https://drive.google.com/uc?export=view&id=1nWDaSSF_hxmF7BJV9D28y_RWiqOpIaEE)
-
-> En la url http://localhost:3000, pulsa en botón crear anuncio y nos lleva al formulario para crear el anuncio
-
-![Formulario Anuncio](https://drive.google.com/uc?export=view&id=1tuCGnJBi7P9r537rZrMC2XYw8_HqMEoI)
-
 POST /api/anuncios/upload
+
+> Requiere un Token valido
+> El Token lo tenemos que poner en headers{Authotize: Token valido al loguearnos}
+> En el body debemos poner lo siguiente (La imagen debemos seleccionarla como file).
+
+![Imagen Anuncio Creado](https://drive.google.com/uc?export=view&id=1cMNZHU_k5RlaT3djMPWgW4_EOl38W3MR)
 
 > Si todo ha salido correctamente nos mandara un json.
 
 {
-  "tags": [
-    "funny",
-    "gaming",
-    "sports",
-    "house"
-  ],
-  "_id": "5f5e7a306e95a5e45d97c8e4",
-  "nombre": "TV LG",
-  "precio": 50,
-  "venta": false,
-  "foto": "1600027184060_lampara_noche.jpg",
-  "__v": 0
+    "tags": [
+        "work, funny"
+    ],
+    "_id": "5fa812598b43cd68cb51c16b",
+    "nombre": "Ps5",
+    "precio": 400,
+    "venta": true,
+    "foto": "1604850265905_detalle3.png",
+    "thumbnail": "images/thumbnail/Thumb_1604850265905_detalle3.png",
+    "__v": 0
 }
 
 ## Borrar Anuncio
 
 DELETE /:_id
+
+> Requiere un Token valido
 
 {
     "status": "Ok",
@@ -86,6 +113,8 @@ DELETE /:_id
 
 GET /api/anuncios/tags
 
+> Requiere un Token valido
+
 {
   "tagsPermitidos": "work / funny / sport / house / lifestyle / gaming"
 }
@@ -93,26 +122,26 @@ GET /api/anuncios/tags
 ## Ejemplos de Filtros
 
 [comment]: # (Filtro Tags)
-* http://localhost:3000/api/anuncios?tags=work%20funny
+* http://localhost:3000/api/anuncios?token=token_valido&tags=work%20funny
 
 [comment]: # (Filtro Precio)
-* http://localhost:3000/api/anuncios?precio=80-190
+* http://localhost:3000/api/anuncios?token=token_valido&precio=80-190
 
 [comment]: # (Filtro Nombre)
 
-* http://localhost:3000/api/anuncios?nombre=n
+* http://localhost:3000/api/anuncios?token=token_valido&nombre=n
 
 [comment]: # (Filtro Orden Descendente)
 
-* http://localhost:3000/api/anuncios?sort=-precio
+* http://localhost:3000/api/anuncios?token=token_valido&sort=-precio
 
 [comment]: # (Filtro Paginación)
 
-* http://localhost:3000/api/anuncios?limit=2&skip=1
+* http://localhost:3000/api/anuncios?token=token_valido&limit=2&skip=1
 
 [comment]: # (Filtro Varios)
 
-* http://localhost:3000/api/anuncios?limit=2&venta=true&precio=60-&tags=sports&nombre=G
+* http://localhost:3000/api/anuncios?token=token_valido&limit=2&venta=true&precio=60-&tags=sports&nombre=G
 
 
 ## Author
