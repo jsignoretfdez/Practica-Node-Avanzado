@@ -10225,3 +10225,14 @@ div.custom-file{
   height: 15px;
   margin: 0 .5rem;
 }
+
+.alert{
+  font-weight: bold;
+  color: #731d1d;
+}
+
+.img-upload{
+  width: 70vw;
+  height: 375px;
+  margin: 0 auto;
+}
