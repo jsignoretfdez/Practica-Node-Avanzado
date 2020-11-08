@@ -11,6 +11,7 @@
         <th class="col-width"><%= __('Price')%></th>
         <th class="col-width"><%= __('Tags')%></th>
         <th class="col-width"><%= __('Photo')%></th>
+        <th class="col-width"><%= __('Thumb')%></th>
     </tr>
     <% anuncios.forEach((anuncio, i) =>{%>
 
@@ -22,6 +23,7 @@
             <td class="col-width"><%= anuncio.precio %>€</td>
             <td class="col-width"><%= anuncio.tags %></td>
             <td class="col-width"><img src="../images/anuncios/<%= anuncio.foto %>" alt="" class="img-spot"></td>
+            <td class="col-width"><a href="<%= anuncio.thumbnail %>"><%= anuncio.thumbnail %></a></td>
         </tr>
     <% }) %>
 </table>
