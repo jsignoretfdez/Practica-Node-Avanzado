@@ -8,14 +8,14 @@ module.exports = function () {
     const jwtToken = req.get('Authorize') || req.query.token || req.body.token;
     if (!jwtToken) {
       return res.status(401).json({
-        mensaje: 'No existe Token',
+        mensaje: 'Token does not exist',
         status: 401,
       });
     }
     jwt.verify(jwtToken, process.env.PRIVATEJWT_SECRET, (err, payload) => {
       if (err) {
         return res.status(401).json({
-          mensaje: 'El Token ha sido modificado',
+          mensaje: 'Modified Token',
           status: 401,
         });
       }
