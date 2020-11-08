@@ -6,7 +6,9 @@ const express = require('express');
 const multer = require('multer');
 
 const router = express.Router();
+const cote = require('cote');
 const Anuncio = require('../../models/Anuncio');
+const path = require('path');
 
 // Funcionalidad subir imagenes a la base de datos
 const storage = multer.diskStorage({
@@ -33,25 +35,24 @@ router.post('/upload', upload.single('foto'), async (req, res, next) => {
       nombre, precio, tags, venta,
     } = req.body;
     const foto = req.file.filename;
-    console.log('Aqui primero', typeof (venta));
-
-    /* Compruebo el select y determino si es verdadero o falso */
-    /*if (venta) {
-      venta = true;
-      console.log('aqui', typeof (venta));
-    } else {
-      venta = false;
-      console.log(typeof (venta));
-    }*/
+    const thumbnail = path.join(`./images/thumbnail/Thumb_${foto}`);
 
     // Creamos el documento en memoria
     const anuncio = new Anuncio({
-      nombre, precio, venta, tags, foto,
+      nombre, precio, venta, tags, foto, thumbnail,
     });
 
     // Lo guardamos en BD
     const anuncioGuardado = await anuncio.save();
     res.json(anuncioGuardado);
+
+    const requesterThumbnail = new cote.Requester({ name: 'newThumb' });
+
+    requesterThumbnail.send({
+      type: 'createThumb',
+      rutaImg: `/images/anuncios/${foto}`,
+      thumb: `Thumb_${foto}`,
+    });
   } catch (err) {
     next(err);
   }
