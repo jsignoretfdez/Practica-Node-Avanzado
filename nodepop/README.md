@@ -34,19 +34,13 @@ npm run initDB
 
 **⚠️ Atención este script borra la base de datos solo debe utilizarse en el primer despligue de la aplicación**
 
-## Iniciar Microservicios
-
-**⚠️ Opcional esto solo inicial el microservico pero no arranca la app**
-
-```sh
-npm run micro
-```
-
 ## Iniciar la APP
 
 ```sh
 npm run start
 ```
+
+> Este script inicializa pm2 ecosystem.config.js y la app.
 
 ### Metodos API
 
